@@ -1,1 +1,18 @@
-
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: vaishnavi-service
+          uri: http://localhost:8084
+          predicates:
+            - Path=/user/**
+        - id: feignDemo
+          uri: http://localhost:8086
+          predicates:
+            - Path=/demo/**
+      
+      discovery:
+        locator:
+          enabled: true
+  main:
+    web-application-type: reactive 
